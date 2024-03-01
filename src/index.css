@@ -3068,3 +3068,7 @@ section {
   display: flex;
   justify-content: center;
 }
+
+.obje {
+  padding-bottom: 50px;
+}

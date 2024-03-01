@@ -1,17 +1,14 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import InnerHeaderBanner from "../components/InnerHeaderBanner";
 import InnerHeader from "../components/InnerHeader";
 import Footer from "../components/Footer";
 import contactHeader from "../img/contact-header.jpg";
-import emailjs from 'emailjs-com'
-
-
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   //submit button enable all fileds submited
   const form = useRef();
   const inputRef = useRef(null);
-
 
   const [inputFields, setInputFields] = useState({
     username: "",
@@ -55,30 +52,35 @@ const Contact = () => {
     setSubmitting(true);
 
     // email configure
-    emailjs.sendForm('service_k80xoyk', 'template_q6z4pl4', form.current, 'yV95_dZd7WA5uN3f7')
-      .then((result) => {
+    emailjs
+      .sendForm(
+        "service_k80xoyk",
+        "template_q6z4pl4",
+        form.current,
+        "yV95_dZd7WA5uN3f7"
+      )
+      .then(
+        (result) => {
           //console.log(result.text);
           //console.log("Message sent successfully")
-         
-      }, (error) => {
+        },
+        (error) => {
           console.log(error.text);
-      });
-      //nputRef.current.value = ''; 
-      setInputFields({username: "",
-      email: "",
-      subject: "",
-      message: ""})
+        }
+      );
+    //nputRef.current.value = '';
+    setInputFields({ username: "", email: "", subject: "", message: "" });
   };
 
   const finishSubmit = () => {
-    console.log(inputFields);   
-   //inputRef.current.value = '';
+    console.log(inputFields);
+    //inputRef.current.value = '';
   };
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && submitting) {
       finishSubmit();
-      }
+    }
   }, [errors]);
 
   return (
@@ -89,52 +91,51 @@ const Contact = () => {
         <section id="contact" className="contact">
           <div className="container position-relative" data-aos="fade-up">
             <div className="section-header">
-              <h2> Lets have a TALK </h2>
+              <h2> Contact Information </h2>
             </div>
 
             <div className="row gy-4 d-flex justify-content-end">
               <div className="col-lg-5" data-aos="fade-up" data-aos-delay="100">
                 <div className="info-item d-flex">
-                  <i className="bi bi-geo-alt flex-shrink-0"></i>
+                  <i className="flex-shrink-0 bi bi-geo-alt"></i>
                   <div>
-                    <h4>Location:</h4>
-                    <h5>India:</h5>
-                    <p>
-                      # 1,Sundaram Illam,Chellamal Street, <br /> Shenoy Nagar,
-                      Chennai - 600 030.
-                    </p>
-                    <br />
-                    <h5>U.A.E:</h5>
-                    <p>P.O.Box No 95114,Abu Dhabi,UAE </p>
+                    <h4>Our Address:</h4>
+                    <h5>Rwanda:</h5>
+                    <p>KK 5 Rd, Diamond House, 2nd Floor</p>
                   </div>
                 </div>
 
                 <div className="info-item d-flex">
-                  <i className="bi bi-envelope flex-shrink-0"></i>
+                  <i className="flex-shrink-0 bi bi-envelope"></i>
                   <div>
                     <h4>Email:</h4>
                     <p>
-                      <a href="mailto:info@symbioticinfo.com">
-                        info@symbioticinfo.com
+                      <a href="mailto:rodiorganization@gmail.com">
+                        rodiorganization@gmail.com
                       </a>
                     </p>
                   </div>
                 </div>
 
                 <div className="info-item d-flex">
-                  <i className="bi bi-phone flex-shrink-0"></i>
+                  <i className="flex-shrink-0 bi bi-phone"></i>
                   <div>
-                    <h4>Call:</h4>
-                    <p>+91 - 44 - 4208 2102</p>
+                    <h4>Phone Number:</h4>
+                    <p>+250798493400</p>
                   </div>
                 </div>
               </div>
 
               <div className="col-lg-6" data-aos="fade-up" data-aos-delay="250">
-                <form ref={form} className="php-email-form" onSubmit={handleSubmit}>
+                <form
+                  ref={form}
+                  className="php-email-form"
+                  onSubmit={handleSubmit}
+                >
                   <div className="row">
                     <div className="col-md-6 form-group">
-                      <input  ref={inputRef}
+                      <input
+                        ref={inputRef}
                         onChange={handleChange}
                         value={username}
                         type="text"
@@ -151,8 +152,9 @@ const Contact = () => {
                         </small>
                       ) : null}
                     </div>
-                    <div className="col-md-6 form-group mt-3 mt-md-0">
-                      <input ref={inputRef}
+                    <div className="mt-3 col-md-6 form-group mt-md-0">
+                      <input
+                        ref={inputRef}
                         onChange={handleChange}
                         value={email}
                         type="email"
@@ -168,25 +170,9 @@ const Contact = () => {
                       ) : null}
                     </div>
                   </div>
-                  <div className="form-group mt-3">
-                    <input 
-                   ref={inputRef}
-                      onChange={handleChange}
-                      value={subject}
-                      type="text"
-                      className="form-control"
-                      name="subject"
-                      placeholder="Subject"
-                      style={{ border: errors.message ? "1px solid red" : null }}
-                    />
-                    {errors.subject ? (
-                      <small className="error">
-                        Subject should be at least 5 characters long
-                      </small>
-                    ) : null}
-                  </div>
-                  <div className="form-group mt-3">
-                    <textarea  ref={inputRef}
+                  <div className="mt-3 form-group">
+                    <textarea
+                      ref={inputRef}
                       onChange={handleChange}
                       value={message}
                       className="form-control"
@@ -206,7 +192,7 @@ const Contact = () => {
 
                   <p className="text-center">
                     {Object.keys(errors).length === 0 && submitting ? (
-                      <div className="alert alert-success p-2 ">
+                      <div className="p-2 alert alert-success ">
                         Successfully submitted ✓
                       </div>
                     ) : null}
@@ -214,7 +200,7 @@ const Contact = () => {
 
                   <div className="text-center">
                     <button className="btn btn-primary" type="submit">
-                      Send Message
+                      Submit
                     </button>
                   </div>
                 </form>
