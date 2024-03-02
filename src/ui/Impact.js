@@ -52,12 +52,18 @@ const Impact = () => {
             }
           />
         </div>
-        <div className="w-[30%]">
-          <div>
-            <form>
-              <h1>Search</h1>
-              <input type="text" placeholder="Search..." />
-              <button type="submit">Search</button>
+        <div className="w-[30%] flex flex-col gap-[4%] py-[5%]">
+          <div className="border rounded-[10px] pt-[10%] w-[100%] flex text-center">
+            <form className="w-full flex flex-col gap-[20px]">
+              <h1 className="font-[700] text-[#333356] text-[20px]">Search</h1>
+              <div className="flex flex-col items-center w-full h-[70px]">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="w-[80%] h-full outline-none border-[#101010]"
+                />
+                <button type="submit">Search</button>
+              </div>
             </form>
           </div>
           <div>
