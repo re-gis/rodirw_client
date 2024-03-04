@@ -19,7 +19,7 @@ const MissionCard = () => {
             >
               <img
                 src={rgb_card}
-                className="w-2 h-2 img-fluid"
+                className="h-100 w-100 img-fluid"
                 alt=""
                 title="Educational-content"
               />

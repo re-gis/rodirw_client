@@ -1,29 +1,100 @@
+import React, { useState } from "react";
+import shapeImg from "../img/img-wave2.png";
+import heroImg1 from "../img/rodi/20230717_125212.jpg";
+import heroImg2 from "../img/rodi/20230717_134517.jpg";
+import heroImg3 from "../img/rodi/20230718_083850.jpg";
+import heroImg4 from "../img/rodi/20230718_083911.jpg";
 import { Link } from "react-router-dom";
+import '../../node_modules/react-modal-video/css/modal-video.css'
+import ModalVideo from 'react-modal-video'
 
 const Carousel = () => {
+  const [isOpen, setOpen] = useState(false)
   return (
     <>
       <section id="hero" className="hero d-flex">
-        <div className="container cont-one">
+        <img className="shape" src={shapeImg} alt="#" />
+        <div className="container">
           <div
-            className="row align-items-center cont-two"
+            className="row align-items-center"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <div className="justify-center text-2xl text-center other-con">
+            <div className="col-lg-7 col-md-12 col-12">
               <h2 data-aos="fade-up">
-                RODI believes in participatory Rights based approach
+              RODI believes in participatory Rights based approach
               </h2>
-              <div className="d-flex align-items-center header-text">
+              <blockquote data-aos="fade-up" data-aos-delay="100">
                 <p>
-                  We envision a thriving community where everyone has access to
-                  knowledge and resources necessary for achieving a better
-                  quality of life.
+                
+We envision a thriving community where everyone has access to knowledge and resources
+necessary for achieving a better quality of life.
                 </p>
+              </blockquote>
+              <div className="d-flex align-items-center">
+                <Link to="/about" className="btn-get-started">
+                  Read More
+                </Link>
+                <ModalVideo channel='youtube' autoplay='true' isOpen={isOpen} videoId="yqWX86uT5jM" onClose={() => setOpen(false)} />
+              <span className="btn-watch-video d-flex align-items-center pointer" onClick={()=> setOpen(true)}> <i className="bi bi-play-circle-fill"></i>
+                <span>Watch Intro</span>
+              </span>
               </div>
-              <Link to="/contact" className="mt-3 btn-get-started btn-con">
-                Contact Us
-              </Link>
+            </div>
+            <div className="col-lg-5 col-md-12 col-12">
+              <div className="header-image ">
+                <div
+                  id="carouselExampleFade"
+                  className="carousel slide carousel-fade"
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-indicators">
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleFade"
+                      data-bs-slide-to="0"
+                      className="active"
+                      aria-current="true"
+                      aria-label="Slide 1"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleFade"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleFade"
+                      data-bs-slide-to="2"
+                      aria-label="Slide 3"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleFade"
+                      data-bs-slide-to="3"
+                      aria-label="Slide 3"
+                    ></button>
+                  </div>
+                  <div className="carousel-inner">
+                    <div
+                      className="carousel-item active"
+                     
+                    >
+                      <img src={heroImg1} className="d-block w-100 h-100 size-full" alt="..." />
+                    </div>
+                    <div className="carousel-item">
+                      <img src={heroImg2} className="d-block w-100 h-100 size-full" alt="..." />
+                    </div>
+                    <div className="carousel-item">
+                      <img src={heroImg3} className="d-block w-100" alt="..." />
+                    </div>
+                    <div className="carousel-item">
+                      <img src={heroImg4} className="d-block w-100" alt="..." />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
